@@ -1,13 +1,5 @@
 # **实验二** HBase的安装与使用
 
-**组号：24**
-
-**张扬2020212185**
-
-**付驰2020212135**
-
-**陈昊华2020212194**
-
 **思维导图：**
 
 ![实验二 HBase的安装与使用](./assets/map.png)
@@ -40,8 +32,6 @@ tar xzf hbase-2.4.5-bin.tar.gz
 sudo mv ./hbase-2.4.5 /opt/hbase
 ```
 
-**张扬2020212185的截图：**
-
 ![image-20230407192608870](./assets/image-20230407192608870.png)
 
 ### 2-配置HBase
@@ -59,8 +49,6 @@ export HBASE_HOME=/opt/hbase
 export PATH=$PATH:$HBASE_HOME/bin
 ```
 
-**张扬2020212185的截图：**
-
 ![image-20230407192935809](./assets/image-20230407192935809.png)
 
 更新环境变量：
@@ -68,8 +56,6 @@ export PATH=$PATH:$HBASE_HOME/bin
 ```shell
 source /etc/profile
 ```
-
-**张扬2020212185的截图：**
 
 ![image-20230407193032717](./assets/image-20230407193032717.png)
 
@@ -102,15 +88,11 @@ source /etc/profile
 </property>
 ```
 
-**张扬2020212185的截图：**
-
 ![image-20230407193424059](./assets/image-20230407193424059.png)
 
 注意， `hbase.rootdir` 属性的值应为 `hdfs://localhost:9000/hbase` ； `dfs.replication` 可以设置为1( 非必须)；因为是伪分布式，所以 `hbase.cluster.distributed` 可以为 `true` 。
 
 编辑`hbase-env.sh`文件，添加以下配置，来配置区域服务器的路径，并启动自动管理zookeeper：
-
-**张扬2020212185的截图：**
 
 ![image-20230407193757523](./assets/image-20230407193757523.png)
 
@@ -122,15 +104,11 @@ start-hbase.sh
 hbase shell
 ```
 
-**张扬2020212185的截图：**
-
 ![image-20230407194136202](./assets/image-20230407194136202.png)
 
 ![image-20230407194259343](./assets/image-20230407194259343.png)
 
 运行 `jps` 指令，如果出现 `HQuorumPeer` ， `HRegionServer` 和 `HMaster` ，则证明启动成功：
-
-**张扬2020212185的截图：**
 
 ![image-20230407195547629](./assets/image-20230407195547629.png)
 
@@ -145,8 +123,6 @@ hbase shell
 编辑`/etc/profile`同伪分布。
 
 HBase默认写到 `/${java.io.tmpdir}/HBase-${user.name}` 。` $ {.io.tmpdir} `通常映射到 /tmp 目录下。可以修改配置文件`/opt/hbase/conf/hbase-site.xml` 以规定其映射目录；同时需要修改配置文件来指定内置zookeeper的运行文件保存位置：
-
-**张扬2020212185的截图：**
 
 ![image-20230407200154230](./assets/image-20230407200154230.png)
 
@@ -192,7 +168,7 @@ start-hbase.sh
 hbase shell
 ```
 
-**张扬2020212185的截图：**
+****
 
 ![终于](./assets/终于-1680871061805-2.png)
 
@@ -230,7 +206,7 @@ hdfs namenode -format
 create 'test', 'data'
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407204528934](./assets/image-20230407204528934.png)
 
@@ -238,13 +214,13 @@ create 'test', 'data'
 
 为了证明新表已成功创建，运行 `list` 命令，输出用户空间中的所有表：
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407204637812](./assets/image-20230407204637812.png)
 
 以上过程会将表 test 保存到HDFS上，位置为 `/hbase/data/default` 即我们在 `hbase-site.xml` 上配置的 `hbase.rootdir` 。打开 `http://127.0.0.1:50070/` ，选择 `utilities/Browse the file system`查看：
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407204857768](./assets/image-20230407204857768.png)
 
@@ -258,7 +234,7 @@ get 'test', 'row1'
 scan 'test'
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407205055577](./assets/image-20230407205055577.png)
 
@@ -269,7 +245,7 @@ put 'test', 'row1', 'data:1', 'new value'
 get 'test', 'row1'
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407205230685](./assets/image-20230407205230685.png)
 
@@ -281,7 +257,7 @@ drop 'test'
 list
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407205342582](./assets/image-20230407205342582.png)
 
@@ -297,7 +273,7 @@ HBase的关闭方法为：
 stop-hbase.sh
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407205623581](./assets/image-20230407205623581.png)
 
@@ -309,7 +285,7 @@ stop-hbase.sh
 sudo snap install intellij-idea-community --classic
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407205945428](./assets/image-20230407205945428.png)
 
@@ -330,7 +306,7 @@ tar -zxvf ~/apache-maven-3.8.7-bin.tar.gz
 wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407212102343](./assets/image-20230407212102343.png)
 
@@ -355,7 +331,7 @@ wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bi
 
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407212742189](./assets/image-20230407212742189.png)
 
@@ -365,7 +341,7 @@ wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bi
 
 首先创建一个java项目，并选择maven为构建工具：
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407213031257](./assets/image-20230407213031257.png)
 
@@ -373,7 +349,7 @@ wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bi
 
 在IDEA中打开 `File/Settings/Build,Execution,Deployment/BuildTools/Maven` ，分别设置其中的`Maven home path` 、 `User setting file` 和 `Local repository` 为你的**maven安装目录**、安装目录下的 `/apache-maven-3.8.7/conf/settings.xml` 和**自己的本地仓库路径**。
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407214000196](./assets/image-20230407214000196.png)
 
@@ -433,7 +409,7 @@ wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bi
 </project>
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407214215794](./assets/image-20230407214215794.png)
 
@@ -458,7 +434,7 @@ log4j.appender.R.layout=org.apache.log4j.PatternLayout
 log4j.appender.R.layout.ConversionPattern=%p %t %c - %m%n
 ```
 
-**张扬2020212185的截图**：
+***：
 
 ![image-20230407214751139](./assets/image-20230407214751139.png)
 
